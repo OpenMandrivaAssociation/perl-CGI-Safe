@@ -14,6 +14,7 @@ Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/CGI/%{module}-%{version}.
 BuildRequires:	perl-devel
 BuildRequires:  perl(CGI)
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 The CGI-Safe module makes running the CGI environment safer
