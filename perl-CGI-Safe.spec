@@ -1,20 +1,19 @@
-%define module CGI-Safe
-%define name	perl-%{module}
-%define version 1.25
-%define release %mkrel 5
+%define upstream_name    CGI-Safe
+%define upstream_version 1.25
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Safe method of using CGI.pm
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{module}
-Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/CGI/%{module}-%{version}.tar.bz2
-BuildRequires:	perl-devel
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildRequires:  perl(CGI)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 The CGI-Safe module makes running the CGI environment safer
@@ -22,7 +21,7 @@ by eliminating dangerous %ENV variables and presetting
 certain CGI.pm globals.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -43,7 +42,3 @@ rm -rf %{buildroot}
 %doc Changes README
 %{perl_vendorlib}/CGI
 %{_mandir}/*/*
-
-
-
-
