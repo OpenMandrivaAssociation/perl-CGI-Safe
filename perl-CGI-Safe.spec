@@ -1,15 +1,13 @@
 %define upstream_name    CGI-Safe
-%define upstream_version 1.25
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	1.25
+Release:	6
 
 Summary:	Safe method of using CGI.pm
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/CGI/%{upstream_name}-%{version}.tar.bz2
 Source1:	%{name}.rpmlintrc
 
 BuildRequires:	make
@@ -23,7 +21,7 @@ by eliminating dangerous %ENV variables and presetting
 certain CGI.pm globals.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -48,9 +46,7 @@ make test
 
 * Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 1.250.0-1mdv2011.0
 + Revision: 406869
-- rebuild using %%perl_convert_version
-
-* Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 1.25-5mdv2009.0
+- rebuild using %1.25 Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 1.25-5mdv2009.0
 + Revision: 255820
 - rebuild
 
